@@ -9,11 +9,22 @@ class DealsController < ApplicationController
     render json: deal
   end
 
+  def create
+    deal = Deal.new(deal_params)
+    deal.save
+    render json: deal
+  end
+
   def update
     deal = Deal.find(params[:id])
     if deal.update_attributes(deal_params)
       render json: deal
     end
+  end
+
+  def destroy
+    deal = Deal.find(params[:id])
+    deal.destroy
   end
 
   private
